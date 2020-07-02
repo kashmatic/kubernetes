@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-pod
+  labels:
+    role: web
+spec:
+  containers:
+  - name: mynginx
+    image: nginx
+    volumeMounts:
+    - name: conf
+      mountPath: /etc/nginx/conf.d
+  volumes:
+  - name: conf
+    configMap:
+      name: nginx-cm
+      items:
+      - key: nginx-custom-config.conf
+        path: default.conf

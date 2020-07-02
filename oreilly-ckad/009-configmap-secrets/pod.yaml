@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod
+spec:
+  containers:
+  - name: myalpine
+    image: alpine
+    command: ["/bin/sh", "-c", "env"]
+    envFrom:
+      - configMapRef:
+          name: variables
+      - configMapRef:
+          name: morevars

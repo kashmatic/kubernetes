@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: morevol
+spec:
+  containers:
+  - name: alpine1
+    image: alpine
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+      - mountPath: /test1
+        name: test    ## <- volumes.name
+  - name: alpine2
+    image: alpine
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+      - mountPath: /test2
+        name: test    ## <- volumes.name
+  volumes:
+    - name: test
+      emptyDir: {}
