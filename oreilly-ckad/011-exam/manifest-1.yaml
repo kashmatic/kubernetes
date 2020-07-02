@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-web
+  namespace: ckad-ns1
+  labels:
+    role: myrole
+spec:
+  containers:
+    - name: web
+      image: httpd
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-web
+  namespace: ckad-ns1
+  labels:
+    role: myrole
+spec:
+  containers:
+    - name: web
+      image: nginx
+    - name: logs
+      image: rsyslog

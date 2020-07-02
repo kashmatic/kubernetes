@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: wait-prod
+spec:
+  containers:
+  - name: app
+    image: busybox
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      tcpSocket:
+        port: 80
+    command:
+      - sleep
+      - "3600"
+  - name: web
+    image: nginx
+    ports:
+    - containerPort: 80
