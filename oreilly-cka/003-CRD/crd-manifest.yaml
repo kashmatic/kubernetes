@@ -1,0 +1,8 @@
+kind: BackUp
+apiVersion: stable.linux.com/v1
+metadata:
+  name: my-backup
+spec:
+  timeSpec: "* * * * */5"
+  image: linux-backup-image
+  replicas: 5
