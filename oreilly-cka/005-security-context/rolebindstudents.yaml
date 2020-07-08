@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authrization.k8s.io/v1beta1
+metadata:
+  namespace: students
+  name: students-role-binding
+spec:
+- kind: user
+  name: anna
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: students
+  apiGroup: ""

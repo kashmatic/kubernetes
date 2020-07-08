@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 2000
+  volumes:
+  - name: securevol
+    emptyDir: {}
+  containers:
+  - name: sec-demo
+    image: busybox
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+    volumeMounts:
+    - name: securevol
+      mountPath: /data/demo
+    securityContext:
+      allowPrivilegeEscalation: false
