@@ -1,0 +1,7 @@
+secret:
+  mongodb_uri:
+    username: admin
+    password: password
+    dbchart: database
+    port: 27017
+    dbconn: "guestbook?authSource=admin"
